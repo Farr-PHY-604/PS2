@@ -79,3 +79,15 @@ by LIGO for each merging BBH system can be treated as a Gaussian; the file
 would be a natural consequence of black hole binaries that form *dynamically* as
 opposed to forming out of a pre-existing stellar binary, where the stars can
 interact before they become black holes.  Is this catalog of mergers consistent with a dynamical formation history?  (10 points)
+
+## Problem 3
+
+The 1D [non-linear Schrodinger equation](https://en.wikipedia.org/wiki/Nonlinear_Schr%C3%B6dinger_equation) describes the propagation of light through a non-linear medium.  Note that the solution we are seeking, `psi`, is complex.  For `kappa < 0`, there are "focusing" solutions that have spatially-localized propagating wave packets.  Let `kappa = -0.1` in this problem.  
+
+1. Write down a finite-difference form of the NLS, with spacing in time `dt` and space `dx`; as we did with the linear diffusion equation, symmetrize the evaluation of the spatial part of the equation in time.  (10 points)
+
+1. Assume we are *near* a solution at the advanced time, and write down the finite difference equation for the error term `e` at the advanced time in `psi_new = psi - e`, assuming that `e` is small enough that any term of order `e^2` or higher can be neglected.  (You can either work directly from the finite-difference equations of the previous part, or write first the linearized continuous PDE, and then discretize that).  (10 points)  
+
+1. Write a multigrid solver that will find the solution for the error term at the advanced time assuming periodic boundary conditions.  (20 points).
+
+1. Apply your multigrid solver as part of a time-stepping routine for solving the NLS on a spatial domain $0 < x < 1$ with periodic boundary conditions and a (purely real) Gaussian initial condition with a small (you choose) width.  Show the evolution of the solution with time, in both amplitude and phase; do you see focusing? (10 points).
